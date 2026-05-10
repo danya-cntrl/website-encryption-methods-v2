@@ -50,9 +50,12 @@ export function Header() {
 
           <div className="hidden md:block">
             <Button
+              asChild
               className="rounded-full bg-primary px-6 text-primary-foreground hover:bg-primary/90"
             >
-              Цель сайта
+              <a href="https://rutube.ru/video/7619a3965b14484ca34e11acacf4854f/" target="_blank" rel="noopener noreferrer">
+                Видео
+              </a>
             </Button>
           </div>
 
