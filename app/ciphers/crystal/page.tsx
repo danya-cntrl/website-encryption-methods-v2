@@ -141,6 +141,7 @@ export default function CrystalCipherPage() {
       requiresKey={true}
       keyLabel="Ключевые слова (через запятую)"
       keyPlaceholder="Например: ALPHA,BETA,GAMMA"
+      warningText="Шифр работает только с латиницей и символами './'"
     />
   )
 }
