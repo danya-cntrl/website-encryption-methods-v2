@@ -153,6 +153,7 @@ export default function PurpleCipherPage() {
       requiresKey={true}
       keyLabel="Позиции переключателей (0-24)"
       keyPlaceholder="Например: 1,5,10"
+      warningText="Шифр поддерживает только символы латинского алфавита"
     />
   )
 }
