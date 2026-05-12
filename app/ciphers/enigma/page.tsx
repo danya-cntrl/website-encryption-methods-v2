@@ -195,6 +195,7 @@ export default function EnigmaCipherPage() {
       requiresKey={true}
       keyLabel="Позиции роторов (3 буквы)"
       keyPlaceholder="Например: ABC"
+      warningText="Шифр поддерживает только символы латинского алфавита"
     />
   )
 }
