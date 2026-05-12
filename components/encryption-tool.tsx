@@ -12,6 +12,7 @@ interface EncryptionToolProps {
   requiresKey?: boolean
   keyLabel?: string
   className?: string
+  warningText?: string;
 }
 
 export function EncryptionTool({
@@ -21,6 +22,7 @@ export function EncryptionTool({
   requiresKey = false,
   keyLabel = "Ключ шифрования",
   className,
+  warningText,
 }: EncryptionToolProps) {
   const [plaintext, setPlaintext] = useState("")
   const [key, setKey] = useState("")
@@ -67,6 +69,12 @@ export function EncryptionTool({
         <h3 className="font-serif text-xl font-semibold text-foreground">
           Интерактивное шифрование
         </h3>
+
+        {warningText && (
+          <div className="mb-4 text-base text-muted-foreground">
+            {warningText}
+          </div>
+        )}
         
         {decryptFunction && (
           <div className="flex rounded-lg border border-border bg-muted/50 p-1">
