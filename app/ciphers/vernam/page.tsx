@@ -116,6 +116,7 @@ export default function VernamCipherPage() {
       requiresKey={true}
       keyLabel="Ключ (гамма)"
       keyPlaceholder="Введите случайный ключ..."
+      warningText="Шифр поддерживает только латиницу и выводит результат в HEX"
     />
   )
 }
