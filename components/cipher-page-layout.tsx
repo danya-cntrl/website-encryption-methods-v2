@@ -22,6 +22,7 @@ interface CipherPageLayoutProps {
   requiresKey?: boolean
   keyLabel?: string
   keyPlaceholder?: string
+  warningText?: string
 }
 
 export function CipherPageLayout({
@@ -37,6 +38,7 @@ export function CipherPageLayout({
   requiresKey = false,
   keyLabel,
   keyPlaceholder,
+  warningText,
 }: CipherPageLayoutProps) {
   return (
     <main className="min-h-screen bg-background">
@@ -143,6 +145,7 @@ export function CipherPageLayout({
             requiresKey={requiresKey}
             keyLabel={keyLabel}
             keyPlaceholder={keyPlaceholder}
+            warningText={warningText}
           />
         </div>
       </section>
