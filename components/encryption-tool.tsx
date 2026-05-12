@@ -65,7 +65,7 @@ export function EncryptionTool({
 
   return (
     <div className={cn("rounded-2xl border border-border bg-card p-6 md:p-8", className)}>
-      <div className="mb-2">
+      <div className="mb-8">
         <h3 className="font-serif text-xl font-semibold text-foreground">
           Интерактивное шифрование
         </h3>
@@ -77,7 +77,7 @@ export function EncryptionTool({
         )}
         
         {decryptFunction && (
-          <div className="flex rounded-lg border border-border bg-muted/50 p-1">
+          <div className="inline-flex rounded-lg border border-border bg-muted/50 p-1">
             <button
               onClick={() => setMode("encrypt")}
               className={cn(
