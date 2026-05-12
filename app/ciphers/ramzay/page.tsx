@@ -247,6 +247,7 @@ export default function RamzayCipherPage() {
       requiresKey={true}
       keyLabel="Ключевое слово и гамма"
       keyPlaceholder="Например: SUBWAY,12345"
+      warningText="Шифр поддерживает только символы латинского алфавита и './'"
     />
   )
 }
