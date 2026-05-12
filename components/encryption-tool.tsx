@@ -65,8 +65,8 @@ export function EncryptionTool({
 
   return (
     <div className={cn("rounded-2xl border border-border bg-card p-6 md:p-8", className)}>
-      <div className="mb-8">
-        <h3 className="font-serif text-xl font-semibold text-foreground">
+      <div className="mb-6">
+        <h3 className="font-serif text-xl font-semibold text-foreground mb-4">
           Интерактивное шифрование
         </h3>
 
