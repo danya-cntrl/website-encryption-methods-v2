@@ -61,6 +61,14 @@ class PurpleMachine {
   }
 }
 
+function validateText(text: string): string | null {
+  const upperText = text.toUpperCase();
+  if (!/^[A-Z ]*$/.test(upperText)) {
+    return "[Ошибка: Текст содержит недопустимые символы. Разрешены только латинские буквы.]";
+  }
+  return null;
+}
+
 function purpleEncrypt(plaintext: string, key?: string): string {
   if (!key) {
     return "[Ошибка: Требуются позиции переключателей (через запятую)]"
@@ -71,6 +79,9 @@ function purpleEncrypt(plaintext: string, key?: string): string {
   if (positions.length < 3 || positions.some(p => isNaN(p))) {
     return "[Ошибка: Введите 3 позиции переключателей (0-24), например: 1,5,10]"
   }
+
+  const validationError = validateText(plaintext);
+  if (validationError) return validationError;
   
   if (positions.some(p => p < 0 || p > 24)) {
     return "[Ошибка: Позиции должны быть от 0 до 24]"
@@ -78,14 +89,6 @@ function purpleEncrypt(plaintext: string, key?: string): string {
   
   const machine = new PurpleMachine(positions)
   return machine.processText(plaintext, "encrypt")
-}
-
-function validateText(text: string): string | null {
-  const upperText = text.toUpperCase();
-  if (!/^[A-Z ]*$/.test(upperText)) {
-    return "[Ошибка: Текст содержит недопустимые символы. Разрешены только латинские буквы.]";
-  }
-  return null;
 }
 
 function purpleDecrypt(ciphertext: string, key?: string): string {
@@ -103,7 +106,7 @@ function purpleDecrypt(ciphertext: string, key?: string): string {
     return "[Ошибка: Позиции должны быть от 0 до 24]"
   }
 
-  const validationError = validateText(plaintext);
+  const validationError = validateText(ciphertext);
   if (validationError) return validationError;
   
   const machine = new PurpleMachine(positions)
