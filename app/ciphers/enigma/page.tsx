@@ -138,7 +138,8 @@ function enigmaEncrypt(plaintext: string, key?: string): string {
     return "[Ошибка: Ключ должен содержать 3 латинские буквы (A-Z)]"
   }
 
-  validateText(plaintext)
+  const validationError = validateText(plaintext);
+  if (validationError) return validationError;
   
   const machine = createEnigmaMachine()
   machine.setPositions(positions)
