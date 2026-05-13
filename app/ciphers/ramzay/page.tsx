@@ -50,10 +50,18 @@ function buildRamsayTable(keyword: string): Map<string, string> {
   return mapping
 }
 
-function validateText(text: string): string | null {
+function validateText1(text: string): string | null {
   const upperText = text.toUpperCase();
   if (!/^[A-Z./ ]*$/.test(upperText)) {
     return "[Ошибка: Текст содержит недопустимые символы. Разрешены только латинские буквы.]";
+  }
+  return null;
+}
+
+function validateText2(text: string): string | null {
+  const upperText = text.toUpperCase();
+  if (!/^[A-Z./ ]*$/.test(upperText)) {
+    return "[Ошибка: Текст содержит недопустимые символы. Разрешены только десятичные цифры.]";
   }
   return null;
 }
@@ -63,7 +71,7 @@ function ramzayEncrypt(plaintext: string, key?: string): string {
     return "[Ошибка: Требуется ключ в формате: КЛЮЧЕВОЕ_СЛОВО,ГАММА]"
   }
 
-  const validationError = validateText(plaintext);
+  const validationError = validateText1(plaintext);
   if (validationError) return validationError;
   
   const parts = key.split(",").map(p => p.trim())
@@ -132,7 +140,7 @@ function ramzayDecrypt(ciphertext: string, key?: string): string {
     return "[Ошибка: Требуется ключ в формате: КЛЮЧЕВОЕ_СЛОВО,ГАММА]"
   }
 
-  const validationError = validateText(ciphertext);
+  const validationError = validateText2(ciphertext);
   if (validationError) return validationError;
   
   const parts = key.split(",").map(p => p.trim())
