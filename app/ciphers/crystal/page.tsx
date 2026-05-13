@@ -58,6 +58,14 @@ class KristallMachine {
   }
 }
 
+function validateText(text: string): string | null {
+  const upperText = text.toUpperCase();
+  if (!/^[A-Z ]*$/.test(upperText)) {
+    return "[Ошибка: Текст содержит недопустимые символы. Разрешены только латинские буквы.]";
+  }
+  return null;
+}
+
 function crystalEncrypt(plaintext: string, key?: string): string {
   if (!key) {
     return "[Ошибка: Требуются ключевые слова (через запятую)]"
@@ -68,6 +76,9 @@ function crystalEncrypt(plaintext: string, key?: string): string {
   if (keywords.length === 0) {
     return "[Ошибка: Введите хотя бы одно ключевое слово]"
   }
+
+  const validationError = validateText(plaintext);
+  if (validationError) return validationError;
   
   const machine = new KristallMachine(keywords)
   return machine.process(plaintext, "encrypt")
