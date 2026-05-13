@@ -2,10 +2,21 @@
 
 import { CipherPageLayout } from "@/components/cipher-page-layout"
 
+function validateText(text: string): string | null {
+  const upperText = text.toUpperCase();
+  if (!/^[A-Z 0-9]*$/.test(upperText)) {
+    return "[Ошибка: Текст содержит недопустимые символы. Разрешены только латинские буквы.]";
+  }
+  return null;
+}
+
 function vernamEncrypt(plaintext: string, key?: string): string {
   if (!key) {
     return "[Ошибка: Требуется ключ (гамма) для шифрования]"
   }
+
+  const validationError = validateText(plaintext);
+  if (validationError) return validationError;
   
   if (key.length < plaintext.length) {
     return `[Ошибка: Гамма должна быть не короче сообщения (${plaintext.length} символов)]`
@@ -29,6 +40,9 @@ function vernamDecrypt(ciphertext: string, key?: string): string {
   if (!key) {
     return "[Ошибка: Требуется ключ (гамма) для дешифровки]"
   }
+
+  const validationError = validateText(ciphertext);
+  if (validationError) return validationError;
   
   const hexString = ciphertext.replace(/\s/g, "")
   
