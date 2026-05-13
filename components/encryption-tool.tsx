@@ -98,7 +98,7 @@ export function EncryptionTool({
                   : "text-muted-foreground hover:text-foreground"
               )}
             >
-              Дешифровка
+              Расшифровка
             </button>
           </div>
         )}
