@@ -75,8 +75,12 @@ function ramzayEncrypt(plaintext: string, key?: string): string {
   if (validationError) return validationError;
   
   const parts = key.split(",").map(p => p.trim())
-  if (parts.length < 2) {
+  if (parts.length !== 2) {
     return "[Ошибка: Введите ключевое слово и гамму через запятую (например: SUBWAY,12345)]"
+  }
+
+    if (parts[1].length !== 5) {
+    return "[Ошибка: Гамма должна содержать ровно 5 символов]"
   }
   
   const [keyword, gamma] = parts
@@ -144,8 +148,12 @@ function ramzayDecrypt(ciphertext: string, key?: string): string {
   if (validationError) return validationError;
   
   const parts = key.split(",").map(p => p.trim())
-  if (parts.length < 2) {
+  if (parts.length !== 2) {
     return "[Ошибка: Введите ключевое слово и гамму через запятую (например: SUBWAY,12345)]"
+  }
+
+  if (parts[1].length !== 5) {
+    return "[Ошибка: Гамма должна содержать ровно 5 символов]"
   }
   
   const [keyword, gamma] = parts
