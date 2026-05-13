@@ -88,6 +88,9 @@ function crystalDecrypt(ciphertext: string, key?: string): string {
   if (!key) {
     return "[Ошибка: Требуются ключевые слова (через запятую)]"
   }
+
+  const validationError = validateText(plaintext);
+  if (validationError) return validationError;
   
   const keywords = key.split(",").map(k => k.trim()).filter(k => k.length > 0)
   
