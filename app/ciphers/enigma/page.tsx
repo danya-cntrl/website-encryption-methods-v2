@@ -120,6 +120,14 @@ function createEnigmaMachine(): EnigmaMachine {
   return new EnigmaMachine([rotor1, rotor2, rotor3], REFLECTOR_B)
 }
 
+function validateText(text: string): string | null {
+  const upperText = text.toUpperCase();
+  if (!/^[A-Z ]*$/.test(upperText)) {
+    return "[Ошибка: Текст содержит недопустимые символы. Разрешены только латинские буквы.]";
+  }
+  return null;
+}
+
 function enigmaEncrypt(plaintext: string, key?: string): string {
   if (!key || key.length < 3) {
     return "[Ошибка: Требуется ключ (3 буквы для позиций роторов, например: ABC)]"
@@ -129,6 +137,8 @@ function enigmaEncrypt(plaintext: string, key?: string): string {
   if (!positions) {
     return "[Ошибка: Ключ должен содержать 3 латинские буквы (A-Z)]"
   }
+
+  validateText(plaitext)
   
   const machine = createEnigmaMachine()
   machine.setPositions(positions)
