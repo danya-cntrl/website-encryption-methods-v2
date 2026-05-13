@@ -80,6 +80,14 @@ function purpleEncrypt(plaintext: string, key?: string): string {
   return machine.processText(plaintext, "encrypt")
 }
 
+function validateText(text: string): string | null {
+  const upperText = text.toUpperCase();
+  if (!/^[A-Z ]*$/.test(upperText)) {
+    return "[Ошибка: Текст содержит недопустимые символы. Разрешены только латинские буквы.]";
+  }
+  return null;
+}
+
 function purpleDecrypt(ciphertext: string, key?: string): string {
   if (!key) {
     return "[Ошибка: Требуются позиции переключателей (через запятую)]"
@@ -94,6 +102,9 @@ function purpleDecrypt(ciphertext: string, key?: string): string {
   if (positions.some(p => p < 0 || p > 24)) {
     return "[Ошибка: Позиции должны быть от 0 до 24]"
   }
+
+  const validationError = validateText(plaintext);
+  if (validationError) return validationError;
   
   const machine = new PurpleMachine(positions)
   return machine.processText(ciphertext, "decrypt")
