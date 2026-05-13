@@ -60,7 +60,7 @@ function validateText1(text: string): string | null {
 
 function validateText2(text: string): string | null {
   const upperText = text.toUpperCase();
-  if (!/^[A-Z./ ]*$/.test(upperText)) {
+  if (!/^[0-9 ]*$/.test(upperText)) {
     return "[Ошибка: Текст содержит недопустимые символы. Разрешены только десятичные цифры.]";
   }
   return null;
